@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Base
   - Pipe
+  - CheckScore
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,6 @@ public class CloudController : MonoBehaviour
         if (transform.position.x<=-3.7) {
             transform.position = new Vector3(3.7f,rand,transform.position.z);
         }
-        transform.Translate(-0.01f,0,0);
+        transform.Translate(-0.1f*Time.deltaTime,0,0);
     }
 }
