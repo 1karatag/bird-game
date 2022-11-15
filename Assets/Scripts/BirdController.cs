@@ -27,28 +27,44 @@ public class BirdController : MonoBehaviour
     
     void Update()
     {
+       
+        
         if (menuScreen.activeSelf) {
             Time.timeScale = 0;
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                menuScreen.SetActive(false);
-                Time.timeScale = 1; 
 
+            if (Input.touchCount > 0) {
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began) {
+                    menuScreen.SetActive(false);
+                    Time.timeScale = 1;
+
+                }
             }
+            
         }
         if (gameOverScreen.activeSelf) {
 
             Time.timeScale = 0;
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                SceneManager.LoadScene(0);
+            
+            if (Input.touchCount > 0) {
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began) {
+                    SceneManager.LoadScene(0);
 
+                }
             }
+           
         }
 
+        if (Input.touchCount > 0) {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began) {
+                Debug.Log("as");
+                body.velocity = Vector3.zero;
+                body.velocity = Vector3.up * speed * Time.deltaTime;
+               //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 45);
+            }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Debug.Log("as");
-            body.velocity = Vector3.up * speed * Time.deltaTime;
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 45);
         }
         else {
             if (transform.rotation.z>0) {
