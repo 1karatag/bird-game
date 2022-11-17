@@ -61,8 +61,8 @@ public class BirdController : MonoBehaviour
             if (touch.phase == TouchPhase.Began) {
                 Debug.Log("as");
                 body.velocity = Vector3.zero;
-                body.velocity = Vector3.up * speed * Time.deltaTime;
-               //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 45);
+                body.velocity = Vector3.up * speed  * Time.deltaTime;
+               transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 45);
             }
 
         }
