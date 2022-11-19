@@ -19,6 +19,8 @@ public class BirdController : MonoBehaviour
     public TextMeshProUGUI highScoreText;
     void Start()
     {
+        
+        //PlayerPrefs.SetInt("highScore", 0);
         highScoreText.text = PlayerPrefs.GetInt("highScore").ToString();
         scoreText.text = "";
         body = GetComponent<Rigidbody2D>();
@@ -85,14 +87,17 @@ public class BirdController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "CheckScore") {
             score++;
-            
-            if (PlayerPrefs.GetInt("highScore")<=score) {
-                PlayerPrefs.SetInt("highScore", score);
-                highScoreText.text = PlayerPrefs.GetInt("highScore").ToString();
-            }
-            Debug.Log(PlayerPrefs.GetInt("highScore").ToString());
 
-            scoreText.text = score.ToString();
+            if (PlayerPrefs.GetInt("highScore") <= score) {
+                PlayerPrefs.SetInt("highScore", score);
+                scoreText.text = "New High\n" + PlayerPrefs.GetInt("highScore").ToString();
+                scoreText.color = Color.green;
+            }
+            else {
+                scoreText.text = score.ToString();
+            }
+
+            
         }
     }
 }
